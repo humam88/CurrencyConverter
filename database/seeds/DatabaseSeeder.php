@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Currency;
+use App\Models\currencyRate;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +14,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call('UsersTableSeeder');
+        $this->cleanDatabase();
+        $this->call('CurrencyTableSeeder');
     }
+
+    /**
+     * Truncates all tables in DB
+     */
+    public function cleanDatabase()
+    {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
+        Currency::truncate();
+        CurrencyRate::truncate();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+    }
+
 }
