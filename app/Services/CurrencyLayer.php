@@ -16,7 +16,7 @@ class CurrencyLayer implements CurrencyConverterInterface
      * @param string $relativeCurrencyCodes
      * @return array
      */
-    public function get($originalCurrencyCode = 'USD', $relativeCurrencyCodes = 'JPY,GBP,EUR') : array
+    public function convert($originalCurrencyCode = 'USD', $relativeCurrencyCodes = 'JPY,GBP,EUR') : array
     {
         $ApiKey= env('CURRENCYLAYER_API_KEY');
 
